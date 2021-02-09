@@ -19,5 +19,15 @@
 *.tar.gz
 *.rar
 
+#编辑器文件
+.gitee
+.idea
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# 测试配置
+src/test/resources/*
+
+target
+log

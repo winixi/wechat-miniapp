@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.util.client.httpclient;
+package sh.evc.sdk.wechat.miniapp.util.httpclient;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -16,29 +16,30 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sh.evc.sdk.wechat.miniapp.Const;
 import sh.evc.sdk.wechat.miniapp.domain.MediaFile;
-import sh.evc.sdk.wechat.miniapp.util.client.HttpDelegate;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import static org.apache.commons.codec.Charsets.UTF_8;
 
 /**
- * @author vioao
+ * http client实现
+ *
+ * @author winixi
+ * @date 2021/2/11 4:29 PM
  */
-public class HttpClientDelegate implements HttpDelegate {
+public class HttpClient {
 
-  private static final Logger log = LoggerFactory.getLogger(HttpClientDelegate.class);
+  private static final Logger log = LoggerFactory.getLogger(HttpClient.class);
   private static final CloseableHttpClient httpClient = HttpClientBuilder.custom().build();
   private static final StringResponseHandler stringHandler = new StringResponseHandler();
   private static final MediaFileResponseHandler fileHandler = new MediaFileResponseHandler();
   private static final ByteArrayResponseHandler byteArrayHandler = new ByteArrayResponseHandler();
 
-  @Override
   public String get(String url, Map<String, String> params) {
     String response = null;
     try {
@@ -49,7 +50,6 @@ public class HttpClientDelegate implements HttpDelegate {
     return response;
   }
 
-  @Override
   public String post(String url, Map<String, String> params, String postData) {
     String response = null;
     try {
@@ -60,18 +60,24 @@ public class HttpClientDelegate implements HttpDelegate {
     return response;
   }
 
-  @Override
-  public byte[] post(String url, String postData) {
+  /**
+   * 提交，接收buffer
+   *
+   * @param url
+   * @param params
+   * @param postData
+   * @return
+   */
+  public byte[] postReceiveBuffer(String url, Map<String, String> params, String postData) {
     byte[] response = null;
     try {
-      response = httpClient.execute(buildPostRequest(url, null, postData), byteArrayHandler);
+      response = httpClient.execute(buildPostRequest(url, params, postData), byteArrayHandler);
     } catch (Exception e) {
       log.error("Post error.url: " + url + ", postData: " + postData, e);
     }
     return response;
   }
 
-  @Override
   public String upload(String url, Map<String, String> params, File file) {
     String response = null;
     try {
@@ -82,7 +88,6 @@ public class HttpClientDelegate implements HttpDelegate {
     return response;
   }
 
-  @Override
   public MediaFile download(String url, Map<String, String> params) {
     MediaFile response = null;
     try {
@@ -131,7 +136,7 @@ public class HttpClientDelegate implements HttpDelegate {
       }
     }
     if (data != null) {
-      builder.setEntity(new StringEntity(data, Const.Charset.UTF_8));
+      builder.setEntity(new StringEntity(data, StandardCharsets.UTF_8));
     }
     if (file != null) {
       MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create().addBinaryBody("media", file);
@@ -190,7 +195,7 @@ public class HttpClientDelegate implements HttpDelegate {
         if (contentType.equalsIgnoreCase("text/plain")) {
           // 定义BufferedReader输入流来读取URL的响应
           HttpEntity entity = response.getEntity();
-          String str = EntityUtils.toString(entity, Const.Charset.UTF_8);
+          String str = EntityUtils.toString(entity, StandardCharsets.UTF_8);
           mediaFile.setError(str);
         } else {
           Header dispositionHeader = response.getFirstHeader("Content-disposition");

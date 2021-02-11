@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.domain;
+package sh.evc.sdk.wechat.miniapp.domain.activity;
 
 /**
  * 活动消息模版参数
@@ -6,7 +6,7 @@ package sh.evc.sdk.wechat.miniapp.domain;
  * @author winixi
  * @date 2021/2/9 4:11 PM
  */
-public class ActivityTemplateParam {
+public class TemplateParam {
 
   /**
    * 属性名
@@ -18,7 +18,7 @@ public class ActivityTemplateParam {
    */
   private String value;
 
-  public ActivityTemplateParam(String name, String value) {
+  public TemplateParam(String name, String value) {
     this.name = name;
     this.value = value;
   }

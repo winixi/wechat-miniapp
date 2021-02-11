@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.domain;
+package sh.evc.sdk.wechat.miniapp.domain.customer;
 
 /**
  * 连接消息
@@ -6,7 +6,7 @@ package sh.evc.sdk.wechat.miniapp.domain;
  * @author winixi
  * @date 2019-06-07 14:09
  */
-public class CustomLink {
+public class Link {
 
   /**
    * 消息标题
@@ -28,7 +28,7 @@ public class CustomLink {
    */
   private String thumbUrl;
 
-  public CustomLink(String title, String description, String url, String thumbUrl) {
+  public Link(String title, String description, String url, String thumbUrl) {
     this.title = title;
     this.description = description;
     this.url = url;

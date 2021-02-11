@@ -4,6 +4,9 @@ import sh.evc.sdk.wechat.miniapp.dict.RequestMethod;
 import sh.evc.sdk.wechat.miniapp.response.ActivityIdCreateResponse;
 import sh.evc.sdk.wechat.miniapp.util.ParamsMap;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 动态消息id创建
  *
@@ -37,11 +40,11 @@ public class ActivityIdCreateRequest extends ApiRequest<ActivityIdCreateResponse
   }
 
   @Override
-  public ParamsMap getBasicParams() {
-    ParamsMap params = new ParamsMap();
-    params.add("access_token", accessToken);
-    params.add("unionid", unionId);
-    params.add("openid", openId);
+  public Map<String, String> getBasicParams() {
+    Map<String, String> params = new HashMap<>();
+    params.put("access_token", accessToken);
+    params.put("unionid", unionId);
+    params.put("openid", openId);
     return params;
   }
 

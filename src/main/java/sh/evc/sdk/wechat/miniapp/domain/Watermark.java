@@ -10,9 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Watermark {
 
+  /**
+   * appId
+   */
   @JsonProperty("appid")
   private String appId;
 
+  /**
+   * 时间戳
+   */
   private long timestamp;
 
   public String getAppId() {
@@ -29,5 +35,13 @@ public class Watermark {
 
   public void setTimestamp(long timestamp) {
     this.timestamp = timestamp;
+  }
+
+  @Override
+  public String toString() {
+    return "Watermark{" +
+            "appId='" + appId + '\'' +
+            ", timestamp=" + timestamp +
+            '}';
   }
 }

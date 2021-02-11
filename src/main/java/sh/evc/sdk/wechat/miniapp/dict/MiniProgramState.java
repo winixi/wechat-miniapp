@@ -6,7 +6,7 @@ package sh.evc.sdk.wechat.miniapp.dict;
  * @author winixi
  * @date 2021/2/9 4:00 PM
  */
-public enum VersionType {
+public enum MiniProgramState {
 
   /**
    * 开发版
@@ -25,7 +25,7 @@ public enum VersionType {
 
   private String value;
 
-  VersionType(String value) {
+  MiniProgramState(String value) {
     this.value = value;
   }
 

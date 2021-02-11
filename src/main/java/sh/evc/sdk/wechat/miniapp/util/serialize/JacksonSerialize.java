@@ -10,10 +10,10 @@ import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sh.evc.sdk.wechat.miniapp.Const;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Jackson 实现的json和xml序列化.
@@ -45,7 +45,7 @@ public class JacksonSerialize implements SerializeDelegate {
   public <T> T jsonToBean(String json, Class<T> clazz) {
     T result = null;
     try {
-      result = OBJECT_MAPPER.readValue(new ByteArrayInputStream(json.getBytes(Const.Charset.UTF_8)), clazz);
+      result = OBJECT_MAPPER.readValue(new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8)), clazz);
     } catch (IOException e) {
       log.error("Convert json to bean " + clazz.getName() + " error.", e);
     }
@@ -56,7 +56,7 @@ public class JacksonSerialize implements SerializeDelegate {
   public <T> T jsonToBean(String json, TypeReference valueTypeRef) {
     T result = null;
     try {
-      result = OBJECT_MAPPER.readValue(new ByteArrayInputStream(json.getBytes(Const.Charset.UTF_8)), valueTypeRef);
+      result = OBJECT_MAPPER.readValue(new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8)), valueTypeRef);
     } catch (IOException e) {
       log.error("Convert json to bean " + valueTypeRef.getType().getTypeName() + " error.", e);
     }
@@ -78,7 +78,7 @@ public class JacksonSerialize implements SerializeDelegate {
   public <T> T xmlToBean(String xml, Class<T> c) {
     T t = null;
     try {
-      t = XML_MAPPER.readValue(new ByteArrayInputStream(xml.getBytes(Const.Charset.UTF_8)), c);
+      t = XML_MAPPER.readValue(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)), c);
     } catch (IOException e) {
       log.error("Convert xml to bean " + c.getName() + " error.", e);
     }

@@ -2,6 +2,7 @@ package sh.evc.sdk.wechat.miniapp.util;
 
 import sh.evc.sdk.wechat.miniapp.Const;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 /**
@@ -39,7 +40,7 @@ public class DigestUtil {
   private static String hash(String algorithm, String srcStr) {
     try {
       MessageDigest md = MessageDigest.getInstance(algorithm);
-      byte[] bytes = md.digest(srcStr.getBytes(Const.Charset.UTF_8));
+      byte[] bytes = md.digest(srcStr.getBytes(StandardCharsets.UTF_8));
       return toHex(bytes);
     } catch (Exception e) {
       throw new RuntimeException(e);

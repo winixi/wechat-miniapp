@@ -5,6 +5,8 @@ import sh.evc.sdk.wechat.miniapp.response.ImgSecCheckResponse;
 import sh.evc.sdk.wechat.miniapp.util.ParamsMap;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 检查一张图片是否含有违法违规内容
@@ -35,9 +37,9 @@ public class ImgSecCheckRequest extends ApiRequest<ImgSecCheckResponse> {
   }
 
   @Override
-  public ParamsMap getBasicParams() {
-    ParamsMap params = new ParamsMap();
-    params.add("access_token", accessToken);
+  public Map<String, String> getBasicParams() {
+    Map<String, String> params = new HashMap<>();
+    params.put("access_token", accessToken);
     return params;
   }
 

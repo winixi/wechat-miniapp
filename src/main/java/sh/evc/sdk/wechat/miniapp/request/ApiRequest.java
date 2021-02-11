@@ -1,11 +1,12 @@
 package sh.evc.sdk.wechat.miniapp.request;
 
-
 import sh.evc.sdk.wechat.miniapp.dict.RequestMethod;
+import sh.evc.sdk.wechat.miniapp.dict.ResponseType;
 import sh.evc.sdk.wechat.miniapp.response.ApiResponse;
 import sh.evc.sdk.wechat.miniapp.util.ParamsMap;
 
 import java.io.File;
+import java.util.Map;
 
 /**
  * api request
@@ -27,7 +28,7 @@ public abstract class ApiRequest<T extends ApiResponse> {
    *
    * @return
    */
-  public abstract ParamsMap getBasicParams();
+  public abstract Map<String, String> getBasicParams();
 
   /**
    * 获取接口地址
@@ -59,4 +60,12 @@ public abstract class ApiRequest<T extends ApiResponse> {
    */
   public abstract Class<T> getResponseClass();
 
+  /**
+   * 返回类型，默认都是字符串
+   *
+   * @return
+   */
+  public ResponseType getResponseType() {
+    return ResponseType.STRING;
+  }
 }

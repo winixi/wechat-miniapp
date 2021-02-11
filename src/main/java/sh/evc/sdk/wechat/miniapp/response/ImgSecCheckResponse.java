@@ -6,5 +6,5 @@ package sh.evc.sdk.wechat.miniapp.response;
  * @author winixi
  * @date 2021/2/9 3:00 PM
  */
-public class ImgSecCheckResponse extends JsonResponse{
+public class ImgSecCheckResponse extends JsonResponse {
 }

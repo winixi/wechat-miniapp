@@ -1,9 +1,10 @@
 package sh.evc.sdk.wechat.miniapp.response;
 
 import sh.evc.sdk.wechat.miniapp.dict.RequestMethod;
-import sh.evc.sdk.wechat.miniapp.util.ParamsMap;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * 微信请求返回基本状态数据.
@@ -35,7 +36,7 @@ public class ApiResponse {
   /**
    * 基本url参数
    */
-  private ParamsMap basicParams;
+  private Map<String, String> basicParams;
 
   /**
    * body参数
@@ -46,6 +47,11 @@ public class ApiResponse {
    * 返回内容
    */
   private String responseBody;
+
+  /**
+   * 二维码图片二进制数据
+   */
+  private byte[] responseBuffer;
 
   public String getReqUrl() {
     return reqUrl;
@@ -79,11 +85,11 @@ public class ApiResponse {
     this.responseTime = responseTime;
   }
 
-  public ParamsMap getBasicParams() {
+  public Map<String, String> getBasicParams() {
     return basicParams;
   }
 
-  public void setBasicParams(ParamsMap basicParams) {
+  public void setBasicParams(Map<String, String> basicParams) {
     this.basicParams = basicParams;
   }
 
@@ -103,6 +109,14 @@ public class ApiResponse {
     this.responseBody = responseBody;
   }
 
+  public byte[] getResponseBuffer() {
+    return responseBuffer;
+  }
+
+  public void setResponseBuffer(byte[] responseBuffer) {
+    this.responseBuffer = responseBuffer;
+  }
+
   @Override
   public String toString() {
     return "ApiResponse{" +
@@ -113,6 +127,7 @@ public class ApiResponse {
             ", basicParams=" + basicParams +
             ", entityData='" + entityData + '\'' +
             ", responseBody='" + responseBody + '\'' +
+            ", responseBuffer=" + Arrays.toString(responseBuffer) +
             '}';
   }
 }

@@ -2,8 +2,8 @@ package sh.evc.sdk.wechat.miniapp;
 
 import org.junit.Test;
 import sh.evc.sdk.wechat.miniapp.dict.ActivityTargetState;
-import sh.evc.sdk.wechat.miniapp.domain.ActivityTemplateInfo;
-import sh.evc.sdk.wechat.miniapp.domain.ActivityTemplateParam;
+import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateInfo;
+import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateParam;
 import sh.evc.sdk.wechat.miniapp.request.ActivityIdCreateRequest;
 import sh.evc.sdk.wechat.miniapp.request.ActivityUpdateRequest;
 import sh.evc.sdk.wechat.miniapp.request.ImgSecCheckRequest;
@@ -67,12 +67,12 @@ public class MiniappClientTest extends BaseTest {
   public void activityUpdate() {
     String activityId = "";
     ActivityTargetState targetState = ActivityTargetState.WAITING;
-    ActivityTemplateParam memberCount = new ActivityTemplateParam("member_count", "1");
-    ActivityTemplateParam roomLimit = new ActivityTemplateParam("room_limit", "10");
-    ActivityTemplateParam[] params = new ActivityTemplateParam[]{
+    TemplateParam memberCount = new TemplateParam("member_count", "1");
+    TemplateParam roomLimit = new TemplateParam("room_limit", "10");
+    TemplateParam[] params = new TemplateParam[]{
             memberCount, roomLimit
     };
-    ActivityTemplateInfo templateInfo = new ActivityTemplateInfo(params);
+    TemplateInfo templateInfo = new TemplateInfo(params);
     ActivityUpdateRequest request = new ActivityUpdateRequest(accessToken, activityId, targetState, templateInfo);
     ActivityUpdateResponse response = client.execute(request);
     JsonFormat.print(response);

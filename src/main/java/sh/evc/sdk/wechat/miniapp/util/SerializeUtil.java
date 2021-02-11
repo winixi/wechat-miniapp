@@ -1,8 +1,8 @@
 package sh.evc.sdk.wechat.miniapp.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import sh.evc.sdk.wechat.miniapp.util.serialize.SerializeDelegate;
 import sh.evc.sdk.wechat.miniapp.util.serialize.JacksonSerialize;
+import sh.evc.sdk.wechat.miniapp.util.serialize.SerializeDelegate;
 
 /**
  * 序列号单元
@@ -11,7 +11,9 @@ import sh.evc.sdk.wechat.miniapp.util.serialize.JacksonSerialize;
  */
 public class SerializeUtil {
 
-  // 使用jackson实现的序列化工具.如有自定义的实现修改此处即可
+  /**
+   * 使用jackson实现的序列化工具.如有自定义的实现修改此处即可
+   */
   private final static SerializeDelegate delegate = new JacksonSerialize();
 
   /**

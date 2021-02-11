@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.domain;
+package sh.evc.sdk.wechat.miniapp.domain.customer;
 
 /**
  * 客服消息文本
@@ -6,14 +6,14 @@ package sh.evc.sdk.wechat.miniapp.domain;
  * @author winixi
  * @date 2019-06-07 16:36
  */
-public class CustomText {
+public class Text {
 
   /**
    * 消息内容
    */
   private String content;
 
-  public CustomText(String content) {
+  public Text(String content) {
     this.content = content;
   }
 

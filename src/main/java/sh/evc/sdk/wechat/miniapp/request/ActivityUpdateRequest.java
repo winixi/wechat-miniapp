@@ -2,9 +2,12 @@ package sh.evc.sdk.wechat.miniapp.request;
 
 import sh.evc.sdk.wechat.miniapp.dict.ActivityTargetState;
 import sh.evc.sdk.wechat.miniapp.dict.RequestMethod;
-import sh.evc.sdk.wechat.miniapp.domain.ActivityTemplateInfo;
+import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateInfo;
 import sh.evc.sdk.wechat.miniapp.response.ActivityUpdateResponse;
 import sh.evc.sdk.wechat.miniapp.util.ParamsMap;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 修改被分享的动态消息
@@ -32,9 +35,17 @@ public class ActivityUpdateRequest extends ApiRequest<ActivityUpdateResponse> {
   /**
    * 动态消息对应的模板信息
    */
-  private ActivityTemplateInfo templateInfo;
+  private TemplateInfo templateInfo;
 
-  public ActivityUpdateRequest(String accessToken, String activityId, ActivityTargetState targetState, ActivityTemplateInfo templateInfo) {
+  /**
+   * 构造
+   *
+   * @param accessToken
+   * @param activityId
+   * @param targetState
+   * @param templateInfo
+   */
+  public ActivityUpdateRequest(String accessToken, String activityId, ActivityTargetState targetState, TemplateInfo templateInfo) {
     this.accessToken = accessToken;
     this.activityId = activityId;
     this.targetState = targetState;
@@ -51,9 +62,9 @@ public class ActivityUpdateRequest extends ApiRequest<ActivityUpdateResponse> {
   }
 
   @Override
-  public ParamsMap getBasicParams() {
-    ParamsMap params = new ParamsMap();
-    params.add("access_token", accessToken);
+  public Map<String, String> getBasicParams() {
+    Map<String, String> params = new HashMap<>();
+    params.put("access_token", accessToken);
     return params;
   }
 

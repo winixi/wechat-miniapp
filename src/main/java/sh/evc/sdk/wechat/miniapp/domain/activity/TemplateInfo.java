@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.domain;
+package sh.evc.sdk.wechat.miniapp.domain.activity;
 
 import java.util.Arrays;
 
@@ -8,22 +8,22 @@ import java.util.Arrays;
  * @author winixi
  * @date 2021/2/9 4:03 PM
  */
-public class ActivityTemplateInfo {
+public class TemplateInfo {
 
   /**
    * 模版参数
    */
-  private ActivityTemplateParam[] parameterList;
+  private TemplateParam[] parameterList;
 
-  public ActivityTemplateInfo(ActivityTemplateParam[] parameterList) {
+  public TemplateInfo(TemplateParam[] parameterList) {
     this.parameterList = parameterList;
   }
 
-  public ActivityTemplateParam[] getParameterList() {
+  public TemplateParam[] getParameterList() {
     return parameterList;
   }
 
-  public void setParameterList(ActivityTemplateParam[] parameterList) {
+  public void setParameterList(TemplateParam[] parameterList) {
     this.parameterList = parameterList;
   }
 

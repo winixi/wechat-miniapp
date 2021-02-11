@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.domain;
+package sh.evc.sdk.wechat.miniapp.domain.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author winixi
  * @date 2021/2/9 5:06 PM
  */
-public class CustomMiniappPage {
+public class MiniProgramPage {
 
   /**
    * 消息标题
@@ -26,7 +26,7 @@ public class CustomMiniappPage {
    */
   private String thumbMediaId;
 
-  public CustomMiniappPage(String title, String pagePath, String thumbMediaId) {
+  public MiniProgramPage(String title, String pagePath, String thumbMediaId) {
     this.title = title;
     this.pagePath = pagePath;
     this.thumbMediaId = thumbMediaId;

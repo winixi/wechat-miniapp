@@ -1,4 +1,4 @@
-package sh.evc.sdk.wechat.miniapp.util.client.httpclient;
+package sh.evc.sdk.wechat.miniapp.util.httpclient;
 
 import org.apache.http.HttpHost;
 import org.apache.http.config.Registry;
@@ -28,7 +28,8 @@ import java.security.cert.X509Certificate;
 /**
  * 自定义HttpClient构建工具.
  *
- * @author vioao
+ * @author winixi
+ * @date 2021/2/11 4:29 PM
  */
 public class HttpClientBuilder {
 
@@ -37,11 +38,18 @@ public class HttpClientBuilder {
   private static final int DEFAULT_MAX_PER_ROUTE = 100;
   private static final int DEFAULT_TIME_OUT = 60000;
 
-  private final int maxTotal; //线程池大小
-  private final int timeout; //连接超时时间
+  //线程池大小
+  private final int maxTotal;
+
+  //连接超时时间
+  private final int timeout;
   private final int maxPerRoute;
-  private final int retryTimes; //重试次数
-  private final HttpHost proxy; //http代理
+
+  //重试次数
+  private final int retryTimes;
+
+  //http代理
+  private final HttpHost proxy;
 
   HttpClientBuilder(int maxTotal, int timeout, int maxPerRoute, int retryTimes, HttpHost proxy) {
     this.maxTotal = maxTotal;
@@ -53,7 +61,8 @@ public class HttpClientBuilder {
 
   private SSLConnectionSocketFactory buildSslConnectionSocketFactory() {
     try {
-      return new SSLConnectionSocketFactory(createIgnoreVerifySsl()); // 优先绕过安全证书
+      //优先绕过安全证书
+      return new SSLConnectionSocketFactory(createIgnoreVerifySsl());
     } catch (Exception e) {
       LOGGER.error("ssl connection fail", e);
     }
@@ -79,7 +88,7 @@ public class HttpClientBuilder {
 
     };
 
-    /*SSLContext sc = SSLContexts.createSystemDefault();*/
+    //SSLContext sc = SSLContexts.createSystemDefault();
     //SSLContext sc = SSLContext.getInstance("SSLv3");
     SSLContext sc = SSLContexts.custom().build();
     sc.init(null, new TrustManager[]{trustManager}, null);

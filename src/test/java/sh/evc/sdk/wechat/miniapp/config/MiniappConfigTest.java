@@ -15,16 +15,16 @@ import java.util.Properties;
  * @author winixi
  * @date 2021/1/21 4:43 PM
  */
-public class TestConfig implements MiniappConfig {
+public class MiniappConfigTest implements MiniappConfig {
 
-  private final static Logger logger = LoggerFactory.getLogger(TestConfig.class);
+  private final static Logger logger = LoggerFactory.getLogger(MiniappConfigTest.class);
 
   private String appId;
   private String appSecret;
   private String token;
   private String encodingAesKey;
 
-  public TestConfig() {
+  public MiniappConfigTest() {
     InputStream in = this.getClass().getResourceAsStream("/config.properties");
     try {
       InputStreamReader inputStreamReader = new InputStreamReader(in, StandardCharsets.UTF_8);

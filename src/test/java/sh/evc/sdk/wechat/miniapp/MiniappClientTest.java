@@ -1,17 +1,23 @@
 package sh.evc.sdk.wechat.miniapp;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import sh.evc.sdk.wechat.miniapp.client.MiniappClient;
+import sh.evc.sdk.wechat.miniapp.config.MiniappConfig;
+import sh.evc.sdk.wechat.miniapp.config.MiniappConfigTest;
+import sh.evc.sdk.wechat.miniapp.dict.ActionType;
 import sh.evc.sdk.wechat.miniapp.dict.ActivityTargetState;
 import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateInfo;
 import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateParam;
-import sh.evc.sdk.wechat.miniapp.request.ActivityIdCreateRequest;
-import sh.evc.sdk.wechat.miniapp.request.ActivityUpdateRequest;
-import sh.evc.sdk.wechat.miniapp.request.ImgSecCheckRequest;
-import sh.evc.sdk.wechat.miniapp.request.MsgSecCheckRequest;
-import sh.evc.sdk.wechat.miniapp.response.ActivityIdCreateResponse;
-import sh.evc.sdk.wechat.miniapp.response.ActivityUpdateResponse;
-import sh.evc.sdk.wechat.miniapp.response.ImgSecCheckResponse;
-import sh.evc.sdk.wechat.miniapp.response.MsgSecCheckResponse;
+import sh.evc.sdk.wechat.miniapp.domain.marketing.ActionParam;
+import sh.evc.sdk.wechat.miniapp.domain.marketing.Trace;
+import sh.evc.sdk.wechat.miniapp.domain.marketing.UserAction;
+import sh.evc.sdk.wechat.miniapp.handler.ResponseHandler;
+import sh.evc.sdk.wechat.miniapp.handler.ResponseHandlerTest;
+import sh.evc.sdk.wechat.miniapp.request.*;
+import sh.evc.sdk.wechat.miniapp.response.*;
 import sh.evc.sdk.wechat.miniapp.util.JsonFormat;
 
 import java.io.File;
@@ -22,9 +28,32 @@ import java.io.File;
  * @author winixi
  * @date 2021/2/9 2:54 PM
  */
-public class MiniappClientTest extends BaseTest {
+public class MiniappClientTest {
 
-  private String accessToken = "";
+  public final static Logger log = LoggerFactory.getLogger(MiniappClientTest.class);
+  public MiniappClient client;
+  public MiniappConfig config = new MiniappConfigTest();
+  public ResponseHandler handler = new ResponseHandlerTest();
+
+  /**
+   * 2021-02-18
+   */
+  private String accessToken = "42_hPi-uMjgIF5rAiMIT-PITUP_KyFU1TuW6xNNRIEG2hcmi40p185pe8HHrIP9Nx5DzOJkJtI7K-KVatBIIzSyCizkzwDdlpuvMZyjv4DsSDaZ3mjaU5TwCJAgZwDyyOIByPpB_7rUxJBnbsuvIMKjAJALPN";
+
+  @Before
+  public void before() {
+    client = new MiniappClient(config, handler);
+  }
+
+  /**
+   * 访问令牌
+   */
+  @Test
+  public void accessToken() {
+    AccessTokenGetRequest request = new AccessTokenGetRequest(config.getAppId(), config.getAppSecret());
+    AccessTokenGetResponse response = client.execute(request);
+    JsonFormat.print(response);
+  }
 
   /**
    * 测试信息安全验证
@@ -77,4 +106,21 @@ public class MiniappClientTest extends BaseTest {
     ActivityUpdateResponse response = client.execute(request);
     JsonFormat.print(response);
   }
+
+  /**
+   * 用户广告动作
+   */
+  @Test
+  public void userActionAdd() {
+    String userActionSetId = "123";
+    String url = "http://baidu.com";
+    int actionTime = (int) (System.currentTimeMillis() / 1000);
+    String clickId = "123456";
+    int paramValue = 1;
+    UserAction userAction = new UserAction(userActionSetId, url, actionTime, ActionType.RESERVATION, new Trace(clickId), new ActionParam(paramValue));
+    UserActionAddRequest request = new UserActionAddRequest(accessToken, new UserAction[]{userAction});
+    UserActionAddResponse response = client.execute(request);
+    JsonFormat.print(response);
+  }
+
 }

@@ -1,7 +1,5 @@
 package sh.evc.sdk.wechat.miniapp.util;
 
-import sh.evc.sdk.wechat.miniapp.Const;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 

@@ -36,6 +36,10 @@ public class MiniappClient {
     this.handler = handler;
   }
 
+  public MiniappConfig getConfig() {
+    return config;
+  }
+
   /**
    * 执行请求
    *

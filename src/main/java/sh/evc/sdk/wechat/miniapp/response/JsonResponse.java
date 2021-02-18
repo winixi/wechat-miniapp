@@ -38,6 +38,13 @@ public class JsonResponse extends ApiResponse {
     this.errMsg = errMsg;
   }
 
+  public boolean isSuccess() {
+    if (errCode == null || errCode == 0) {
+      return true;
+    }
+    return false;
+  }
+
   @Override
   public String toString() {
     return "JsonResponse{" +

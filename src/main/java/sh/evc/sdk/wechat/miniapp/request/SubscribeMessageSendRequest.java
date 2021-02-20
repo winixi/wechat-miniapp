@@ -87,6 +87,7 @@ public class SubscribeMessageSendRequest extends ApiRequest<SubscribeMessageSend
     params.add("page", page);
     params.add("data", data);
     params.add("lang", lang.name());
+    params.add("miniprogram_state", miniProgramState.getValue());
     return params;
   }
 

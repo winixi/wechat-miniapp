@@ -63,6 +63,27 @@ public class QrCodeUnlimitedGetRequest extends ApiRequest<QrCodeUnlimitedGetResp
     this.scene = scene;
   }
 
+  /**
+   * 构造
+   *
+   * @param accessToken
+   * @param scene
+   * @param page
+   * @param width
+   * @param autoColor
+   * @param lineColor
+   * @param isHyaline
+   */
+  public QrCodeUnlimitedGetRequest(String accessToken, String scene, String page, Integer width, Boolean autoColor, LineColor lineColor, Boolean isHyaline) {
+    this.accessToken = accessToken;
+    this.scene = scene;
+    this.page = page;
+    this.width = width;
+    this.autoColor = autoColor;
+    this.lineColor = lineColor;
+    this.isHyaline = isHyaline;
+  }
+
   public void setPage(String page) {
     this.page = page;
   }

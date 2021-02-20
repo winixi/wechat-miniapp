@@ -5,7 +5,7 @@ import sh.evc.sdk.wechat.miniapp.dict.Lang;
 /**
  * 用户信息
  *
- * @author vioao
+ * @author winixi
  */
 public class UserInfo {
 

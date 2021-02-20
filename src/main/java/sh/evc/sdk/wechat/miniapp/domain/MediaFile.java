@@ -5,7 +5,7 @@ import java.io.BufferedInputStream;
 /**
  * 文件Bean.
  *
- * @author vioao
+ * @author winixi
  */
 public class MediaFile {
 

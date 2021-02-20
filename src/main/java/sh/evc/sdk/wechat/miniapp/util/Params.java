@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * key,value请求参数构建工具类.
  *
- * @author vioao
+ * @author winixi
  */
 public class Params {
 

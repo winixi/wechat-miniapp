@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 /**
  * 微信交互数据序列化代理实现接口.不同的序列化需要实现该接口.
  *
- * @author vioao
+ * @author winixi
  */
 public interface SerializeDelegate {
 

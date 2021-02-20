@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 /**
  * Message digests Util.
  *
- * @author vioao
+ * @author winixi
  */
 public class DigestUtil {
 

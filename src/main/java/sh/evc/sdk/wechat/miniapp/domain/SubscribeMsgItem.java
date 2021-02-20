@@ -3,7 +3,7 @@ package sh.evc.sdk.wechat.miniapp.domain;
 /**
  * 订阅消息
  *
- * @author vioao
+ * @author winixi
  */
 public class SubscribeMsgItem {
 

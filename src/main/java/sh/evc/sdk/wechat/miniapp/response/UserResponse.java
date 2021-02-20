@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 关注用户基本信息.
  *
- * @author vioao
+ * @author winixi
  */
 public class UserResponse extends ApiResponse {
 

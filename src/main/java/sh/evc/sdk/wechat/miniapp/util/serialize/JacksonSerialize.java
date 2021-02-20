@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * Jackson 实现的json和xml序列化.
  *
- * @author vioao
+ * @author winixi
  */
 public class JacksonSerialize implements SerializeDelegate {
 

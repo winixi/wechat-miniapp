@@ -60,13 +60,12 @@ public class CustomerMsgSendRequest extends ApiRequest<CustomerMsgSendResponse> 
    *
    * @param accessToken
    * @param toUser
-   * @param msgType
    * @param text
    */
-  public CustomerMsgSendRequest(String accessToken, String toUser, CustomMsgType msgType, Text text) {
+  public CustomerMsgSendRequest(String accessToken, String toUser, Text text) {
+    this.msgType = CustomMsgType.TEXT;
     this.accessToken = accessToken;
     this.toUser = toUser;
-    this.msgType = msgType;
     this.text = text;
   }
 
@@ -75,13 +74,12 @@ public class CustomerMsgSendRequest extends ApiRequest<CustomerMsgSendResponse> 
    *
    * @param accessToken
    * @param toUser
-   * @param msgType
    * @param link
    */
-  public CustomerMsgSendRequest(String accessToken, String toUser, CustomMsgType msgType, Link link) {
+  public CustomerMsgSendRequest(String accessToken, String toUser, Link link) {
+    this.msgType = CustomMsgType.LINK;
     this.accessToken = accessToken;
     this.toUser = toUser;
-    this.msgType = msgType;
     this.link = link;
   }
 
@@ -90,13 +88,12 @@ public class CustomerMsgSendRequest extends ApiRequest<CustomerMsgSendResponse> 
    *
    * @param accessToken
    * @param toUser
-   * @param msgType
    * @param image
    */
-  public CustomerMsgSendRequest(String accessToken, String toUser, CustomMsgType msgType, Image image) {
+  public CustomerMsgSendRequest(String accessToken, String toUser, Image image) {
+    this.msgType = CustomMsgType.IMAGE;
     this.accessToken = accessToken;
     this.toUser = toUser;
-    this.msgType = msgType;
     this.image = image;
   }
 
@@ -105,13 +102,12 @@ public class CustomerMsgSendRequest extends ApiRequest<CustomerMsgSendResponse> 
    *
    * @param accessToken
    * @param toUser
-   * @param msgType
    * @param miniProgramPage
    */
-  public CustomerMsgSendRequest(String accessToken, String toUser, CustomMsgType msgType, MiniProgramPage miniProgramPage) {
+  public CustomerMsgSendRequest(String accessToken, String toUser, MiniProgramPage miniProgramPage) {
+    this.msgType = CustomMsgType.MINI_APP_PAGE;
     this.accessToken = accessToken;
     this.toUser = toUser;
-    this.msgType = msgType;
     this.miniProgramPage = miniProgramPage;
   }
 

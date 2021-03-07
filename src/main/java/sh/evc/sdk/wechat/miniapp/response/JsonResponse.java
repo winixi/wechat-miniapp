@@ -14,7 +14,7 @@ public class JsonResponse extends ApiResponse {
    * 错误码
    */
   @JsonProperty("errcode")
-  private Integer errCode;
+  private Integer errCode = 0;
 
   /**
    * 错误消息

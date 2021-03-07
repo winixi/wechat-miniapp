@@ -6,7 +6,7 @@ package sh.evc.sdk.wechat.miniapp.response;
  * @author winixi
  * @date 2019/10/9 5:30 PM
  */
-public class ActivityIdCreateResponse extends ApiResponse {
+public class ActivityIdCreateResponse extends JsonResponse {
 
   /**
    * 活动编号

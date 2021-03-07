@@ -7,4 +7,9 @@ package sh.evc.sdk.wechat.miniapp.response;
  * @date 2021/2/11 4:23 PM
  */
 public class QrCodeUnlimitedGetResponse extends JsonResponse {
+
+  @Override
+  public String toString() {
+    return "QrCodeUnlimitedGetResponse{} " + super.toString();
+  }
 }

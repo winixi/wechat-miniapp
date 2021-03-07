@@ -1,6 +1,6 @@
 package sh.evc.sdk.wechat.miniapp.handler;
 
-import sh.evc.sdk.wechat.miniapp.response.ApiResponse;
+import sh.evc.sdk.wechat.miniapp.response.JsonResponse;
 
 /**
  * test response handler
@@ -11,7 +11,7 @@ import sh.evc.sdk.wechat.miniapp.response.ApiResponse;
 public class ResponseHandlerTest implements ResponseHandler {
 
   @Override
-  public void append(ApiResponse response) {
+  public void append(JsonResponse response) {
     System.out.println(response.toString());
   }
 }

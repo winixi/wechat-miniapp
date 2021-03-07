@@ -9,6 +9,7 @@ import sh.evc.sdk.wechat.miniapp.config.MiniappConfig;
 import sh.evc.sdk.wechat.miniapp.config.MiniappConfigTest;
 import sh.evc.sdk.wechat.miniapp.dict.ActionType;
 import sh.evc.sdk.wechat.miniapp.dict.ActivityTargetState;
+import sh.evc.sdk.wechat.miniapp.domain.LineColor;
 import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateInfo;
 import sh.evc.sdk.wechat.miniapp.domain.activity.TemplateParam;
 import sh.evc.sdk.wechat.miniapp.domain.marketing.ActionParam;
@@ -123,4 +124,16 @@ public class MiniappClientTest {
     JsonFormat.print(response);
   }
 
+  @Test
+  public void QrCodeUnlimitedGet() {
+    String page = "player/fieldTimeJoin/info/info";
+    int width = 430;
+    boolean autoColor = false;
+    LineColor lineColor = new LineColor("0", "0", "0");
+    boolean isHyaline = false;
+    String scene = "aaa";
+    QrCodeUnlimitedGetRequest request = new QrCodeUnlimitedGetRequest(accessToken, scene, page, width, autoColor, lineColor, isHyaline);
+    QrCodeUnlimitedGetResponse response = client.execute(request);
+    JsonFormat.print(response);
+  }
 }

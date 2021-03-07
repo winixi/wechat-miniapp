@@ -26,7 +26,12 @@ public enum CustomMsgType {
   /**
    * 小程序卡片
    */
-  MINI_APP_PAGE("miniprogrampage");
+  MINI_APP_PAGE("miniprogrampage"),
+
+  /**
+   * 事件
+   */
+  EVENT("event");
 
   private String value;
 

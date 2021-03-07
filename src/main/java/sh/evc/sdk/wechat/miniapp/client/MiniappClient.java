@@ -8,7 +8,6 @@ import sh.evc.sdk.wechat.miniapp.dict.RequestMethod;
 import sh.evc.sdk.wechat.miniapp.dict.ResponseType;
 import sh.evc.sdk.wechat.miniapp.handler.ResponseHandler;
 import sh.evc.sdk.wechat.miniapp.request.ApiRequest;
-import sh.evc.sdk.wechat.miniapp.response.ApiResponse;
 import sh.evc.sdk.wechat.miniapp.response.JsonResponse;
 import sh.evc.sdk.wechat.miniapp.util.ParamsMap;
 import sh.evc.sdk.wechat.miniapp.util.SerializeUtil;
@@ -47,7 +46,7 @@ public class MiniappClient {
    * @param <T>
    * @return
    */
-  public <T extends ApiResponse> T execute(ApiRequest<T> request) {
+  public <T extends JsonResponse> T execute(ApiRequest<T> request) {
     RequestMethod method = request.getMethod();
     Map<String, String> basicParams = request.getBasicParams();
     String url = Const.SERVER_URL + request.getUri() + getUrlParams(basicParams);
@@ -58,8 +57,13 @@ public class MiniappClient {
     T response;
     if (responseType == ResponseType.BUFFER) {
       byte[] buffer = requestBuffer(method, url, basicParams, entityData);
-      response = (T) new JsonResponse();
-      response.setResponseBuffer(buffer);
+      try {
+        response = request.getResponseClass().newInstance();
+        response.setResponseBuffer(buffer);
+      } catch (Exception e) {
+        logger.error("反射Buffer接口错误");
+        return null;
+      }
     } else {
       String res = requestString(method, url, basicParams, entityData, file);
       response = SerializeUtil.jsonToBean(res, request.getResponseClass());

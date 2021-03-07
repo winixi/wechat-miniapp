@@ -1,6 +1,6 @@
 package sh.evc.sdk.wechat.miniapp.handler;
 
-import sh.evc.sdk.wechat.miniapp.response.ApiResponse;
+import sh.evc.sdk.wechat.miniapp.response.JsonResponse;
 
 /**
  * response handler
@@ -15,5 +15,5 @@ public interface ResponseHandler {
    *
    * @param response
    */
-  void append(ApiResponse response);
+  void append(JsonResponse response);
 }

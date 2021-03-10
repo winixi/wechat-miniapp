@@ -1,5 +1,6 @@
 package sh.evc.sdk.wechat.miniapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import sh.evc.sdk.wechat.miniapp.dict.Lang;
 
 /**
@@ -12,16 +13,19 @@ public class UserInfo {
   /**
    * 用户的标识，对当前公众号唯一
    */
+  @JsonProperty("openId")
   private String openId;
 
   /**
    * 全局id
    */
-  private String unionId;
+  @JsonProperty("unionId")
+  private String unionId = "";
 
   /**
    * 用户的昵称
    */
+  @JsonProperty("nickName")
   private String nickName;
 
   /**
@@ -52,6 +56,7 @@ public class UserInfo {
   /**
    * 头像
    */
+  @JsonProperty("avatarUrl")
   private String avatarUrl;
 
   /**
